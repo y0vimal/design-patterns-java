@@ -13,5 +13,13 @@ public class Main {
         compressionContext.setCompressionStrategy(new RarCompression());
         compressionContext.compress();         // rar compression strategy
 
+        // using lambda
+
+        compressionContext.setCompressionStrategy(() -> System.out.println("zip compression using lambda"));
+        compressionContext.compress();
+
+        compressionContext.setCompressionStrategy(() -> System.out.println("rar compression using lambda"));
+        compressionContext.compress();
+
     }
 }
