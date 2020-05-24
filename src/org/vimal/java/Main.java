@@ -1,13 +1,16 @@
 package org.vimal.java;
 
+import org.vimal.java.oberverDesignPattern.SensorLogger;
+import org.vimal.java.oberverDesignPattern.SensorReceiver;
+import org.vimal.java.oberverDesignPattern.model.SensorData;
 import org.vimal.java.strategyDesignPattern.CompressionContext;
 import org.vimal.java.strategyDesignPattern.RarCompression;
 import org.vimal.java.strategyDesignPattern.ZipCompression;
 
 public class Main {
     public static void main(String[] args) {
-	// write your code here
-        CompressionContext compressionContext = new CompressionContext(new ZipCompression());
+	    // Strategy pattern main code
+        /* CompressionContext compressionContext = new CompressionContext(new ZipCompression());
         compressionContext.compress();   // zip compression strategy
 
         compressionContext.setCompressionStrategy(new RarCompression());
@@ -19,7 +22,20 @@ public class Main {
         compressionContext.compress();
 
         compressionContext.setCompressionStrategy(() -> System.out.println("rar compression using lambda"));
-        compressionContext.compress();
+        compressionContext.compress();*/
+
+
+        // observer pattern main code
+
+        SensorReceiver sensorReceiver = new SensorReceiver();
+        SensorLogger sensorLogger1 = new SensorLogger("sensorlogger1");
+        SensorLogger sensorLogger2 = new SensorLogger("sensorlogger2");
+        sensorReceiver.register(sensorLogger1);
+        sensorReceiver.register(sensorLogger2);
+        sensorReceiver.changeData(new SensorData("earthQuake", "7.5"));
+
+        sensorReceiver.unregister(sensorLogger1);
+        sensorReceiver.changeData(new SensorData("earthQuake", "7.8"));
 
     }
 }
