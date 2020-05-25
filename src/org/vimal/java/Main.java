@@ -1,6 +1,7 @@
 package org.vimal.java;
 
 import org.vimal.java.FactoryDesignPattern.*;
+import org.vimal.java.abstractfactorypattern.Reader;
 import org.vimal.java.oberverDesignPattern.SensorLogger;
 import org.vimal.java.oberverDesignPattern.SensorReceiver;
 import org.vimal.java.oberverDesignPattern.model.SensorData;
@@ -41,12 +42,24 @@ public class Main {
         sensorReceiver.changeData(new SensorData("earthQuake", "7.8"));*/
 
         // Factory design pattern
-        
-        Scanner scanner = new Scanner(System.in);
+
+        /*Scanner scanner = new Scanner(System.in);
         String readerType = scanner.hasNext() ? scanner.nextLine() : null;
 
         Reader  reader = null;
         ReaderFactory readerFactory = new ReaderFactory();
+        reader = readerFactory.getReader(readerType);
+
+        if(reader != null) reader.read();
+        else System.out.println("no valid reader Type found.");*/
+
+        // Abstract factory pattern
+
+        Scanner scanner = new Scanner(System.in);
+        String readerType = scanner.hasNext() ? scanner.nextLine() : null;
+
+        Reader reader = null;
+        org.vimal.java.abstractfactorypattern.ReaderFactory readerFactory = new org.vimal.java.abstractfactorypattern.ReaderFactory();
         reader = readerFactory.getReader(readerType);
 
         if(reader != null) reader.read();
