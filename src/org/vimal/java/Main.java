@@ -41,6 +41,7 @@ public class Main {
         sensorReceiver.changeData(new SensorData("earthQuake", "7.8"));*/
 
         // Factory design pattern
+        
         Scanner scanner = new Scanner(System.in);
         String readerType = scanner.hasNext() ? scanner.nextLine() : null;
 
